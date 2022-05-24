@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/head.html',{
+"title":"Sound Bar"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/header.html',{})
+		<main>
+		<audio id='applause' src="files/sounds/applause.mp3"></audio>
+		<audio id='boo' src="files/sounds/boo.mp3"></audio>
+		<audio id='gasp' src="files/sounds/gasp.mp3"></audio>
+		<audio id='tada' src="files/sounds/tada.mp3"></audio>
+		<audio id='victory' src="files/sounds/victory.mp3"></audio>
+		<audio id='wrong' src="files/sounds/wrong.mp3"></audio>
+<div id="buttons"></div>
+		</main>
+		@@include('html/footer.html',{})
+	</div>
+	<script>
+		const sounds = ['applause','boo','gasp','tada','victory','wrong']
+		sounds.forEach(sound =>{
+			const btn = document.createElement('button')
+			btn.classList.add('btn')
+
+			btn.addEventListener('click',()=>{
+				stopSongs()
+				document.getElementById(sound).play()
+			})
+
+			btn.innerHTML = sound;
+
+			document.getElementById('buttons').appendChild(btn)
+		})
+		function stopSongs(){
+			sounds.forEach(sound=>{
+				const song = document.getElementById(sound)
+				song.pause()
+				song.currentTime = 0;
+			})
+		}
+	</script>
+	<script src="js/app.min.js"></script>
+</body>
+
+</html>

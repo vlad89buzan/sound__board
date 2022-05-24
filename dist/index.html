@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220524215717">
+	<title>Sound Bar</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		
+		<main>
+		<audio id='applause' src="files/sounds/applause.mp3"></audio>
+		<audio id='boo' src="files/sounds/boo.mp3"></audio>
+		<audio id='gasp' src="files/sounds/gasp.mp3"></audio>
+		<audio id='tada' src="files/sounds/tada.mp3"></audio>
+		<audio id='victory' src="files/sounds/victory.mp3"></audio>
+		<audio id='wrong' src="files/sounds/wrong.mp3"></audio>
+<div id="buttons"></div>
+		</main>
+		<footer></footer>
+	</div>
+	<script>
+		const sounds = ['applause','boo','gasp','tada','victory','wrong']
+		sounds.forEach(sound =>{
+			const btn = document.createElement('button')
+			btn.classList.add('btn')
+
+			btn.addEventListener('click',()=>{
+				stopSongs()
+				document.getElementById(sound).play()
+			})
+
+			btn.innerHTML = sound;
+
+			document.getElementById('buttons').appendChild(btn)
+		})
+		function stopSongs(){
+			sounds.forEach(sound=>{
+				const song = document.getElementById(sound)
+				song.pause()
+				song.currentTime = 0;
+			})
+		}
+	</script>
+	<script src="js/app.min.js?_v=20220524215717"></script>
+</body>
+
+</html>
